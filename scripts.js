@@ -10,6 +10,8 @@ function gameRound(computerChoice, playerChoice) {
     let win = `You won! ${playerChoice} beats ${computerChoice}`;
     let lose = `You lost! ${computerChoice} beats ${playerChoice}`;
     const draw = "It's a tie!";
+    computerChoice = getComputerChoice();
+    playerChoice = prompt("What's your move?").toLowerCase();
 
     if (computerChoice == playerChoice.toLowerCase()) {
         return draw;
@@ -17,30 +19,30 @@ function gameRound(computerChoice, playerChoice) {
     // rocks
     if (computerChoice === "rock" && playerChoice.toLowerCase() === "paper") {
         return win;
-    }
-    if (computerChoice === "rock" && playerChoice.toLowerCase() === "scissors") {
+    } else if (computerChoice === "rock" && playerChoice.toLowerCase() === "scissors") {
         return lose;
-    }
-    // paper
-    if (computerChoice === "paper" && playerChoice.toLowerCase() === "rock") {
+    } else if (computerChoice === "paper" && playerChoice.toLowerCase() === "rock") {
         return lose;
-    }
-    if (computerChoice === "paper" && playerChoice.toLowerCase() === "scissors") {
+    } else if (computerChoice === "paper" && playerChoice.toLowerCase() === "scissors") {
         return win;
-    }
-    //scissors
-    if (computerChoice === "scissors" && playerChoice.toLowerCase() === "paper") {
+    } else if (computerChoice === "scissors" && playerChoice.toLowerCase() === "paper") {
         return lose;
-    }
-    if (computerChoice === "scissors" && playerChoice.toLowerCase() === "rock") {
+    } else if (computerChoice === "scissors" && playerChoice.toLowerCase() === "rock") {
         return win;
     }
 }
 
-const computerSelection = getComputerChoice();
-let playerChoice = prompt("What's your move?").toLowerCase();
+function game() {
+    for (let i = 0; i < 5; i++) {
+        console.log(gameRound(computerChoice, playerChoice));
+     }
+}
 
-console.log(gameRound(computerSelection, playerChoice));
+
+let computerChoice = getComputerChoice();
+let playerChoice = prompt("What's your move?").toLowerCase();
+// console.log(gameRound(computerSelection, playerChoice));
+game();
 
 
 
